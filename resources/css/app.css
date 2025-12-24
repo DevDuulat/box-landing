@@ -1,3 +1,109 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes driveRight {
+    0% {
+        transform: translateX(-120%);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(calc(100vw - 100%));
+    }
+}
+
+
+@keyframes dustAppearance {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateX(0);
+    }
+    10% {
+        opacity: 1;
+        transform: scale(1.1) translateX(-20px);
+    }
+    50% {
+        opacity: 0;
+        transform: scale(2) translateX(-100px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(2) translateX(-100px);
+    }
+}
+
+.animate-drive {
+    animation: driveRight 1.4s ease-out forwards;
+}
+
+.animate-dust-cloud {
+    animation: dustAppearance 3s ease-out 0.6s infinite;
+}
+.boxes-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+
+    clip-path: inset(0 30% 0 23%);
+}
+
+.box-anim {
+    position: absolute;
+    width: 200px;
+    bottom: 120px;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+    animation: boxSequence 8s linear infinite;
+    opacity: 0;
+    will-change: left;
+}
+
+@keyframes boxSequence {
+    0% {
+        left: 0%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: 110%;
+        opacity: 0;
+    }
+}
+@keyframes boxSequence {
+    0% {
+        left: 0%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+    100% {
+        left: 110%;
+        opacity: 1;
+    }
+}
+
+.d-1 { animation-delay: 0s; }
+.d-2 { animation-delay: 1s; }
+.d-3 { animation-delay: 2s; }
+.d-4 { animation-delay: 3s; }
+.d-5 { animation-delay: 4s; }
+.d-6 { animation-delay: 5s; }
+.d-7 { animation-delay: 6s; }
+.d-8 { animation-delay: 7s; }
+.d-9 { animation-delay: 8s; }
+.d-10 { animation-delay: 9s; }
+.d-11 { animation-delay: 10s; }
+.d-12 { animation-delay: 11s; }
