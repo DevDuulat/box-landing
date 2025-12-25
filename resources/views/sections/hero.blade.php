@@ -1,11 +1,5 @@
-<section class="min-h-screen relative text-white overflow-hidden flex flex-col items-center pt-12 md:pt-20 bg-[#111111]"
-         style="
-            position: relative;
-            background-image: url('/img/background2.webp');
-            background-size: 100%;
-            background-position: bottom;
-            background-repeat: no-repeat;
-          ">
+<section class="min-h-screen relative text-white overflow-hidden flex flex-col items-center pt-24 md:pt-20 bg-[#111111]
+                bg-none md:bg-[url('/img/background2.webp')] md:bg-[length:100%] md:bg-bottom md:bg-no-repeat">
     <div class="bg-mask absolute top-0 left-0 w-full h-32 bg-[#111111] z-20"></div>
 
     <div class="container mx-auto px-4 lg:px-8 relative z-10">
@@ -34,7 +28,7 @@
         </div>
     </div>
 
-    <div class="absolute bottom-0 left-0 w-full max-w-[400px] md:max-w-[600px] lg:max-w-[800px] pointer-events-none z-10 animate-drive">
+    <div class="absolute hidden md:block bottom-0 left-0 w-full max-w-[400px] md:max-w-[600px] lg:max-w-[800px] pointer-events-none z-10 animate-drive">
         <img src="/img/car.png" alt="Доставка" class="w-full h-auto object-contain relative z-10">
         <div class="absolute bottom-4 left-0 flex space-x-[-10px] opacity-0 animate-dust-cloud dust-particle">
             <div class="w-8 h-8 bg-gray-400/40 rounded-full blur-md"></div>
@@ -43,7 +37,7 @@
         </div>
     </div>
 
-    <div class="boxes-layer relative w-full h-full">
+    <div class="boxes-layer hidden md:block relative w-full h-full">
         <img src="/img/1.png" class="box-anim d-1" alt="box">
         <img src="/img/1b.png" class="box-anim d-2" alt="box">
         <img src="/img/1w.png" class="box-anim d-3" alt="box">

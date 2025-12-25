@@ -14,11 +14,51 @@
     @vite('resources/js/app.js')
 
 </head>
-<body class="antialiased">
+<body x-data="productsComponent()" class="antialiased">
 @include('partials.header')
 <main>
     @yield('content')
-
 </main>
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('productsComponent', () => ({
+            isOrderModalOpen: false,
+            isOpen: false,
+            selected: null,
+            activeTab: '',
+
+            products: window.productsListData || [],
+
+            init() {
+                // Устанавливаем первый таб при загрузке
+                if (this.products.length > 0 && !this.activeTab) {
+                    this.activeTab = this.products[0].cat;
+                }
+            },
+
+            get filteredProducts() {
+                return this.products.filter(p => p.cat === this.activeTab);
+            },
+
+            setTab(tab) {
+                this.activeTab = tab;
+            },
+
+            openModal(product) {
+                this.selected = product;
+                this.isOpen = true;
+                document.body.classList.add('overflow-hidden');
+            },
+
+            closeModal() {
+                this.isOpen = false;
+                this.isOrderModalOpen = false;
+                this.selected = null;
+                document.body.classList.remove('overflow-hidden');
+            }
+        }));
+    });
+</script>
 </body>
 </html>

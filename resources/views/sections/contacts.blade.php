@@ -1,4 +1,4 @@
-<div class="p-8 pb-24 bg-white">
+<div id="contacts" class="p-8 pb-24 bg-white">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-8 items-stretch">
         <div class="bg-[#1a1a1a] text-white rounded-[40px] p-10 md:w-1/3 flex flex-col justify-between min-h-[400px]">
             <div>
