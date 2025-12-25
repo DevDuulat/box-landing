@@ -15,10 +15,43 @@
             </nav>
 
             <div class="ml-auto flex items-center space-x-8">
-                <button class="flex items-center space-x-2 group">
-                    <img src="https://flagcdn.com/w20/ru.png" alt="RU" class="w-5 h-auto rounded-sm">
-                    <span class="text-gray-400 group-hover:text-white text-sm transition-colors uppercase">Ru</span>
-                </button>
+                <div x-data="{
+        open: false,
+        currentLang: 'RU',
+        currentFlag: 'https://flagcdn.com/w40/ru.png',
+        languages: [
+            { code: 'RU', name: 'Ru', flag: 'https://flagcdn.com/w40/ru.png' },
+            { code: 'KG', name: 'Kg', flag: 'https://flagcdn.com/w40/kg.png' }
+        ]
+     }"
+                     class="relative inline-block text-left">
+
+                    <button @click="open = !open"
+                            class="flex items-center space-x-3 bg-[#1a1a1a] hover:bg-[#262626] px-4 py-2 rounded-xl transition-all border border-transparent active:scale-95">
+                        <img :src="currentFlag" :alt="currentLang" class="w-8 h-auto rounded-md shadow-sm">
+                        <span class="text-white font-bold text-lg uppercase tracking-wide" x-text="currentLang"></span>
+                        <svg class="w-4 h-4 text-gray-400 transition-transform" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+
+                    <div x-show="open"
+                         @click.outside="open = false"
+                         x-transition:enter="transition ease-out duration-100"
+                         x-transition:enter-start="opacity-0 scale-95"
+                         x-transition:enter-end="opacity-100 scale-100"
+                         x-transition:leave="transition ease-in duration-75"
+                         class="absolute left-0 mt-2 w-full min-w-[120px] bg-[#1a1a1a] rounded-xl shadow-2xl z-50 overflow-hidden border border-gray-800">
+
+                        <template x-for="lang in languages" :key="lang.code">
+                            <button @click="currentLang = lang.code; currentFlag = lang.flag; open = false;"
+                                    class="flex items-center space-x-3 w-full px-4 py-3 hover:bg-[#333] transition-colors group">
+                                <img :src="lang.flag" :alt="lang.code" class="w-8 h-auto rounded-md opacity-80 group-hover:opacity-100">
+                                <span class="text-gray-400 group-hover:text-white font-bold text-lg uppercase" x-text="lang.code"></span>
+                            </button>
+                        </template>
+                    </div>
+                </div>
                 <a href="#" class="bg-[#FFA500] hover:bg-orange-500 text-white px-6 py-3 rounded-lg text-[16px] font-normal flex items-center transition-all whitespace-nowrap">
                     Оставить заявку
                 </a>
