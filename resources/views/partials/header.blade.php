@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <button @click="isOrderModalOpen = true" class="hidden sm:block bg-[#FFA500] hover:bg-orange-500 text-white px-6 py-3 rounded-lg text-[16px] font-normal transition-all whitespace-nowrap">
+                <button @click="openOrderModal()" class="hidden sm:block bg-[#FFA500] hover:bg-orange-500 text-white px-6 py-3 rounded-lg text-[16px] font-normal transition-all whitespace-nowrap">
                     Оставить заявку
                 </button>
 
