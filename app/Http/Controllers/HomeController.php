@@ -11,8 +11,40 @@ class HomeController extends Controller
     {
         $categories = \App\Models\Category::with('products')->get();
 
-        $tabNames = $categories->pluck('name')->map(fn($n) => mb_strtolower($n))->toArray();
+        $productsData = $categories->flatMap(function ($category) {
+            return $category->products->map(function ($product) use ($category) {
+                return [
+                    'key'        => $product->id,
+                    'cat'        => mb_strtolower($category->name),
+                    'title'      => $product->name,
+                    'image'      => $product->photo
+                        ? asset('storage/' . $product->photo)
+                        : 'https://placehold.co/400x300',
+                    'color'      => $product->color_type,
+                    'print'      => $product->print_colors_count,
+                    'dimensions' => $product->dimensions,
+                    'gost'       => (bool) $product->complies_with_gost_fefco,
+                    'specs'      => collect($product->specs ?? [])->mapWithKeys(function ($s) {
+                        $key = match ((string)$s['type']) {
+                            '1'     => 'micro',
+                            '2'     => 'threeLayer',
+                            '3'     => 'fiveLayer',
+                            default => $s['type'],
+                        };
 
-        return view('home', compact('categories', 'tabNames'));
+                        return [$key => [
+                            'profile' => implode(', ', $s['profiles'] ?? []),
+                            'grades'  => implode(', ', $s['grades'] ?? []),
+                        ]];
+                    })->toArray(),
+                ];
+            });
+        })->values();
+
+        return view('home', [
+            'categories'   => $categories,
+            'productsData' => $productsData,
+            'firstTab'     => mb_strtolower($categories->first()->name ?? '')
+        ]);
     }
 }
