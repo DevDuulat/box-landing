@@ -8,20 +8,21 @@ use Illuminate\Database\Seeder;
 
 class ProductSeeder extends Seeder
 {
-
-
-        public function run(): void
+    public function run(): void
     {
-        // Находим категории по именам (которые создал CategorySeeder)
-        $catBox = Category::where('name', 'Короб')->first();
-        $catPizza = Category::where('name', 'Короб для пиццы')->first();
-        $catTray = Category::where('name', 'Лоток')->first();
-        $catElem = Category::where('name', 'Элементы')->first();
+        // Находим категории, используя поиск по JSON ключу 'ru'
+        $catBox = Category::where('name->ru', 'Короб')->first();
+        $catPizza = Category::where('name->ru', 'Короб для пиццы')->first();
+        $catTray = Category::where('name->ru', 'Лоток')->first();
+        $catElem = Category::where('name->ru', 'Элементы')->first();
 
         // 1. КОРОБА
         Product::create([
             'category_id' => $catBox->id,
-            'name' => '4-х клапанный стандарт',
+            'name' => [
+                'ru' => '4-х клапанный стандарт',
+                'kg' => '4 клапандуу стандарт'
+            ],
             'specs' => [
                 [
                     'type' => 2, // Трехслойный
@@ -34,13 +35,22 @@ class ProductSeeder extends Seeder
                     'grades' => ['П-31', 'П-32']
                 ]
             ],
-            'color_type' => 'Бурый / Белый',
-            'dimensions' => 'По требованию заказчика',
+            'color_type' => [
+                'ru' => 'Бурый / Белый',
+                'kg' => 'Күрөң / Ак'
+            ],
+            'dimensions' => [
+                'ru' => 'По требованию заказчика',
+                'kg' => 'Буйрутмачынын талабы боюнча'
+            ],
         ]);
 
         Product::create([
             'category_id' => $catBox->id,
-            'name' => 'Архивный короб',
+            'name' => [
+                'ru' => 'Архивный короб',
+                'kg' => 'Архив кутусу'
+            ],
             'specs' => [
                 [
                     'type' => 2,
@@ -48,13 +58,23 @@ class ProductSeeder extends Seeder
                     'grades' => ['Т-23']
                 ]
             ],
-            'color_type' => 'Бурый',
+            'color_type' => [
+                'ru' => 'Бурый',
+                'kg' => 'Күрөң'
+            ],
+            'dimensions' => [
+                'ru' => 'Стандарт',
+                'kg' => 'Стандарт'
+            ],
         ]);
 
-        // 2. ПИЦЦА (Микрокартон)
+        // 2. ПИЦЦА
         Product::create([
             'category_id' => $catPizza->id,
-            'name' => 'Для пиццы 30 см',
+            'name' => [
+                'ru' => 'Для пиццы 30 см',
+                'kg' => 'Пицца үчүн 30 см'
+            ],
             'specs' => [
                 [
                     'type' => 1, // Микрокартон
@@ -62,14 +82,23 @@ class ProductSeeder extends Seeder
                     'grades' => ['Т-11', 'Т-12']
                 ]
             ],
-            'color_type' => 'Белый / Белый',
-            'dimensions' => '300x300x40 мм',
+            'color_type' => [
+                'ru' => 'Белый / Белый',
+                'kg' => 'Ак / Ак'
+            ],
+            'dimensions' => [
+                'ru' => '300x300x40 мм',
+                'kg' => '300x300x40 мм'
+            ],
         ]);
 
         // 3. ЛОТОК
         Product::create([
             'category_id' => $catTray->id,
-            'name' => 'Кондитерский телевизор',
+            'name' => [
+                'ru' => 'Кондитерский телевизор',
+                'kg' => 'Кондитердик телевизор'
+            ],
             'specs' => [
                 [
                     'type' => 1,
@@ -82,13 +111,23 @@ class ProductSeeder extends Seeder
                     'grades' => ['Т-22']
                 ]
             ],
-            'color_type' => 'Белый',
+            'color_type' => [
+                'ru' => 'Белый',
+                'kg' => 'Ак'
+            ],
+            'dimensions' => [
+                'ru' => 'По размерам',
+                'kg' => 'Өлчөмдөрү боюнча'
+            ],
         ]);
 
         // 4. ЭЛЕМЕНТЫ
         Product::create([
             'category_id' => $catElem->id,
-            'name' => 'Защитный уголок',
+            'name' => [
+                'ru' => 'Защитный уголок',
+                'kg' => 'Коргоочу бурч'
+            ],
             'specs' => [
                 [
                     'type' => 2,
@@ -96,7 +135,14 @@ class ProductSeeder extends Seeder
                     'grades' => ['Т-24']
                 ]
             ],
-            'color_type' => 'Бурый',
+            'color_type' => [
+                'ru' => 'Бурый',
+                'kg' => 'Күрөң'
+            ],
+            'dimensions' => [
+                'ru' => 'Различные',
+                'kg' => 'Ар кандай'
+            ],
         ]);
     }
 }

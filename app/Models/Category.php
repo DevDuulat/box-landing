@@ -11,8 +11,18 @@ class Category extends Model
         'name',
     ];
 
+    protected $casts = [
+        'name' => 'array',
+    ];
+
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function getNameAttribute($value)
+    {
+        $locales = json_decode($value, true) ?: [];
+        return $locales[app()->getLocale()] ?? $locales['ru'] ?? $value;
     }
 }

@@ -9,12 +9,12 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->json('name');
             $table->foreignIdFor(\App\Models\Category::class)->constrained()->cascadeOnDelete();
             $table->json('specs')->nullable();
-            $table->string('color_type')->default('Белый/Бурый');
+            $table->json('color_type');
             $table->integer('print_colors_count')->default(4);
-            $table->string('dimensions')->default('По требованию заказчика');
+            $table->json('dimensions');
             $table->boolean('complies_with_gost_fefco')->default(true);
             $table->string('photo')->nullable();
             $table->string('photo_brown')->nullable();

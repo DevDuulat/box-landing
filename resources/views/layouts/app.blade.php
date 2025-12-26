@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="{{app()->getLocale()}}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,9 +63,13 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
                 </svg>
             </div>
-            <h3 class="text-2xl font-black text-white uppercase mb-2">Заявка <span class="text-green-500">принята!</span></h3>
-            <p class="text-gray-400 mb-8">Мы свяжемся с вами в ближайшее время.</p>
-            <button @click="showSuccess = false" class="w-full bg-white text-black font-bold py-4 rounded-2xl">Отлично</button>
+            <h3 class="text-2xl font-black text-white uppercase mb-2">
+                {{ __('messages.success_title_part1') }} <span class="text-green-500">{{ __('messages.success_title_part2') }}</span>
+            </h3>
+            <p class="text-gray-400 mb-8">{{ __('messages.success_message') }}</p>
+            <button @click="showSuccess = false" class="w-full bg-white text-black font-bold py-4 rounded-2xl">
+                {{ __('messages.success_btn') }}
+            </button>
         </div>
     </div>
 
@@ -79,16 +83,23 @@
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2" stroke-linecap="round"/></svg>
             </button>
 
-            <h3 class="text-2xl font-black text-white uppercase mb-6">Оставить <span class="text-[#FFA500]">заявку</span></h3>
+            <h3 class="text-2xl font-black text-white uppercase mb-6">
+                {{ __('messages.modal_title_part1') }} <span class="text-[#FFA500]">{{ __('messages.modal_title_part2') }}</span>
+            </h3>
 
             <form @submit.prevent="sendForm()" class="space-y-4">
-                <input type="text" x-ref="name" placeholder="Ваше имя" required class="w-full bg-[#111] border border-gray-800 rounded-xl px-5 py-4 text-white outline-none focus:border-[#FFA500]">
-                <input type="tel" x-ref="phone" placeholder="Телефон" required class="w-full bg-[#111] border border-gray-800 rounded-xl px-5 py-4 text-white outline-none focus:border-[#FFA500]">
-                <textarea x-ref="message" placeholder="Ваше сообщение (необязательно)" class="w-full bg-[#111] border border-gray-800 rounded-xl px-5 py-4 text-white outline-none focus:border-[#FFA500] h-24"></textarea>
+                <input type="text" x-ref="name" placeholder="{{ __('messages.name_label') }}" required
+                       class="w-full bg-[#111] border border-gray-800 rounded-xl px-5 py-4 text-white outline-none focus:border-[#FFA500]">
+
+                <input type="tel" x-ref="phone" placeholder="{{ __('messages.phone_label') }}" required
+                       class="w-full bg-[#111] border border-gray-800 rounded-xl px-5 py-4 text-white outline-none focus:border-[#FFA500]">
+
+                <textarea x-ref="message" placeholder="{{ __('messages.message_label') }}"
+                          class="w-full bg-[#111] border border-gray-800 rounded-xl px-5 py-4 text-white outline-none focus:border-[#FFA500] h-24"></textarea>
 
                 <button type="submit" :disabled="loading" class="w-full bg-[#FFA500] text-white font-bold py-4 rounded-xl hover:bg-orange-500 transition-all disabled:opacity-50">
-                    <span x-show="!loading">Отправить данные</span>
-                    <span x-show="loading">Отправка...</span>
+                    <span x-show="!loading">{{ __('messages.submit_btn') }}</span>
+                    <span x-show="loading">{{ __('messages.sending_btn') }}</span>
                 </button>
             </form>
         </div>

@@ -7,29 +7,24 @@
 
             <div class="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 mb-6">
                 <span class="text-[#FFA500] text-xs md:text-sm font-black tracking-widest uppercase">
-                    Производство гофроупаковки
+                    {{ __('messages.hero_badge') }}
                 </span>
             </div>
 
-            <div class="inline-block px-4 py-2.5 rounded-full border border-white/10 bg-white/5 mb-6">
-                <span class="text-[#FFA500] text-xs md:text-sm font-black tracking-widest uppercase">
-                    Производство гофроупаковки
-                </span>
-            </div>
             <h1 class="text-3xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.2] tracking-tight">
-                Гофрокартон напрямую <br class="hidden md:block"> от производителя
+                {{ __('messages.hero_title_1') }} <br class="hidden md:block"> {{ __('messages.hero_title_2') }}
             </h1>
 
             <p class="text-gray-400 text-base md:text-lg max-w-xl leading-relaxed font-normal">
-                Изготавливаем упаковку любой сложности <span class="text-white font-semibold">с 2002 года</span>.
+                {{ __('messages.hero_desc_1') }} <span class="text-white font-semibold">{{ __('messages.hero_desc_year') }}</span>.
                 <br class="hidden md:block">
-                Работаем от 1 коробки, печать до 4 цветов, стабильное качество.
+                {{ __('messages.hero_desc_2') }}
             </p>
         </div>
     </div>
 
     <div class="absolute hidden md:block bottom-0 left-0 w-full max-w-[400px] md:max-w-[600px] lg:max-w-[800px] pointer-events-none z-10 animate-drive">
-        <img src="/img/car.png" alt="Доставка" class="w-full h-auto object-contain relative z-10">
+        <img src="/img/car.png" alt="{{ __('messages.alt_delivery') }}" class="w-full h-auto object-contain relative z-10">
         <div class="absolute bottom-4 left-0 flex space-x-[-10px] opacity-0 animate-dust-cloud dust-particle">
             <div class="w-8 h-8 bg-gray-400/40 rounded-full blur-md"></div>
             <div class="w-12 h-10 bg-gray-500/30 rounded-full blur-lg"></div>

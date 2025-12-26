@@ -26,15 +26,28 @@ class ProductResource extends Resource
                 Forms\Components\Group::make()->schema([
                     Forms\Components\Section::make('Основная информация')
                         ->schema([
-                            Forms\Components\TextInput::make('name')
-                                ->label('Название товара')
-                                ->required(),
+                            // Мультиязычное название
+                            Forms\Components\Tabs::make('Translations')
+                                ->tabs([
+                                    Forms\Components\Tabs\Tab::make('Русский')
+                                        ->schema([
+                                            Forms\Components\TextInput::make('name.ru')
+                                                ->label('Название (RU)')
+                                                ->required(fn (string $operation) => $operation === 'create'),
+                                        ]),
+                                    Forms\Components\Tabs\Tab::make('Кыргызча')
+                                        ->schema([
+                                            Forms\Components\TextInput::make('name.kg')
+                                                ->label('Аталышы (KG)'),
+                                        ]),
+                                ])->columnSpanFull(),
+
                             Forms\Components\Select::make('category_id')
                                 ->label('Категория')
-                                ->relationship('category', 'name')
+                                ->relationship('category', 'name->ru') // Отображаем RU название в списке
                                 ->preload()
                                 ->required(),
-                        ])->columns(2),
+                        ])->columns(1),
 
                     Forms\Components\Section::make('Конфигурация типов картона')
                         ->description('Добавьте характеристики для Микро, Трехслойного или Пятислойного картона')
@@ -44,17 +57,17 @@ class ProductResource extends Resource
                                 ->schema([
                                     Forms\Components\Select::make('type')
                                         ->label('Тип')
-                                        ->options(CardboardType::class)
+                                        ->options(CardboardType::class) // Enum будет использовать наш новый метод label()
                                         ->required()
                                         ->live(),
 
                                     Forms\Components\Select::make('profiles')
                                         ->label('Профили')
                                         ->multiple()
-                                        ->options(fn (Forms\Get $get): array => match ($get('type')) {
-                                            '1', 1 => ['E' => 'E'],
-                                            '2', 2 => ['B' => 'B', 'C' => 'C'],
-                                            '3', 3 => ['BC' => 'BC', 'CE' => 'CE'],
+                                        ->options(fn (Forms\Get $get): array => match ((int)$get('type')) {
+                                            1 => ['E' => 'E'],
+                                            2 => ['B' => 'B', 'C' => 'C'],
+                                            3 => ['BC' => 'BC', 'CE' => 'CE'],
                                             default => [],
                                         })->required(),
 
@@ -65,25 +78,46 @@ class ProductResource extends Resource
                                 ])
                                 ->columns(3)
                                 ->defaultItems(1)
-                                ->reorderable(true)
                                 ->addActionLabel('Добавить еще один тип'),
                         ]),
                 ])->columnSpan(['lg' => 2]),
 
                 Forms\Components\Group::make()->schema([
-                    Forms\Components\Section::make('Общие свойства')
+                    Forms\Components\Section::make('Общие свойства (Перевод)')
                         ->schema([
-                            Forms\Components\TextInput::make('color_type')->label('Цвет')->default('Белый/Бурый'),
-                            Forms\Components\TextInput::make('print_colors_count')->label('Печать')->numeric()->default(4),
-                            Forms\Components\TextInput::make('dimensions')->label('Размер')->default('По требованию'),
-                            Forms\Components\Toggle::make('complies_with_gost_fefco')->label('ГОСТ/FEFCO')->default(true),
+                            Forms\Components\Tabs::make('PropertiesTranslations')
+                                ->tabs([
+                                    Forms\Components\Tabs\Tab::make('RU')
+                                        ->schema([
+                                            Forms\Components\TextInput::make('color_type.ru')
+                                                ->label('Цвет (RU)')->default('Белый/Бурый'),
+                                            Forms\Components\TextInput::make('dimensions.ru')
+                                                ->label('Размер (RU)')->default('По требованию'),
+                                        ]),
+                                    Forms\Components\Tabs\Tab::make('KG')
+                                        ->schema([
+                                            Forms\Components\TextInput::make('color_type.kg')
+                                                ->label('Түсү (KG)')->default('Ак/Күрөң'),
+                                            Forms\Components\TextInput::make('dimensions.kg')
+                                                ->label('Өлчөмү (KG)')->default('Буйрутма боюнча'),
+                                        ]),
+                                ]),
+
+                            Forms\Components\TextInput::make('print_colors_count')
+                                ->label('Кол-во цветов печати')
+                                ->numeric()
+                                ->default(4),
+
+                            Forms\Components\Toggle::make('complies_with_gost_fefco')
+                                ->label('ГОСТ/FEFCO')
+                                ->default(true),
                         ]),
 
                     Forms\Components\Section::make('Изображения')
                         ->schema([
-                            Forms\Components\FileUpload::make('photo')->label('Главное')->image(),
-                            Forms\Components\FileUpload::make('photo_brown')->label('Бурый')->image(),
-                            Forms\Components\FileUpload::make('photo_white')->label('Белый')->image(),
+                            Forms\Components\FileUpload::make('photo')->label('Главное')->image()->directory('products'),
+                            Forms\Components\FileUpload::make('photo_brown')->label('Бурый')->image()->directory('products'),
+                            Forms\Components\FileUpload::make('photo_white')->label('Белый')->image()->directory('products'),
                         ]),
                 ])->columnSpan(['lg' => 1]),
             ])->columns(3);

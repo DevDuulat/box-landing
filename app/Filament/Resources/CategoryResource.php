@@ -26,8 +26,22 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required(),
+                Forms\Components\Tabs::make('Languages')
+                    ->tabs([
+                        Forms\Components\Tabs\Tab::make('Русский')
+                            ->schema([
+                                Forms\Components\TextInput::make('name.ru')
+                                    ->label('Название (RU)')
+                                    ->required(fn (string $context): bool => $context === 'create'),
+                            ]),
+                        Forms\Components\Tabs\Tab::make('Кыргызча')
+                            ->schema([
+                                Forms\Components\TextInput::make('name.kg')
+                                    ->label('Аталышы (KG)')
+                                    ->required(fn (string $context): bool => $context === 'create'),
+                            ]),
+                    ])
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -36,12 +50,9 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label('Название')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

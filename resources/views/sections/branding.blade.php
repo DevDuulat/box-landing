@@ -10,19 +10,17 @@
 }">
 
     <div class="absolute inset-0 pointer-events-none z-0 flex items-center justify-between px-4">
-        <img src="img/Illustration1.png" alt="" class="w-32 md:w-72 transform -translate-x-10">
-
+        <img src="{{ asset('img/Illustration1.png') }}" alt="" class="w-32 md:w-72 transform -translate-x-10">
         <div class="flex gap-12 md:gap-48 transform translate-y-10">
-            <img src="img/Illustration2.png" alt="" class="w-28 md:w-64">
-            <img src="img/Illustration2.png" alt="" class="w-28 md:w-64">
+            <img src="{{ asset('img/Illustration2.png') }}" alt="" class="w-28 md:w-64">
+            <img src="{{ asset('img/Illustration2.png') }}" alt="" class="w-28 md:w-64">
         </div>
-
-        <img src="img/Illustration1.png" alt="" class="w-32 md:w-72 transform translate-x-10">
+        <img src="{{ asset('img/Illustration1.png') }}" alt="" class="w-32 md:w-72 transform translate-x-10">
     </div>
 
     <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
         <h2 class="text-3xl md:text-4xl font-bold text-orange-500 mb-12 text-center uppercase tracking-wide">
-            Брендирование
+            {{ __('messages.branding.title') }}
         </h2>
 
         <div class="relative w-full max-w-2xl flex items-center justify-center mb-12">
@@ -53,19 +51,19 @@
 
         <div class="text-center max-w-3xl space-y-6">
             <p class="text-gray-700 leading-relaxed text-lg">
-                Компания <span class="text-orange-400 font-semibold">«Я — картон»</span> — это не только широкий ассортимент высококачественной продукции, но и сопутствующие услуги. У нас можно заказать такие необходимые для любого предприятия услуги, как:
+                {!! __('messages.branding.main_text') !!}
             </p>
             <div class="flex flex-col items-center text-gray-600 space-y-2">
                 <span class="flex items-start gap-2 italic">
-                    <span class="text-orange-500 leading-none">•</span> разработка фирменного дизайн-макета упаковки;
+                    <span class="text-orange-500 leading-none">•</span> {{ __('messages.branding.service_1') }}
                 </span>
                 <span class="flex items-start gap-2 italic text-center">
-                    <span class="text-orange-500 leading-none">•</span> высококачественную печать на упаковке на флексографическом оборудовании.
+                    <span class="text-orange-500 leading-none">•</span> {{ __('messages.branding.service_2') }}
                 </span>
             </div>
             <p class="text-gray-800 font-bold text-xl pt-4">
-                Наши специалисты знают, как сделать упаковку для Вашей продукции хорошо узнаваемой!
+                {{ __('messages.branding.footer') }}
             </p>
         </div>
     </div>
-    </div>
+</div>
