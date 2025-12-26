@@ -15,7 +15,6 @@ class LeadResource extends Resource
 {
     protected static ?string $model = Lead::class;
 
-    // Заголовок в меню и хлебных крошках
     protected static ?string $navigationLabel = 'Заявки';
     protected static ?string $pluralModelLabel = 'Заявки';
     protected static ?string $modelLabel = 'Заявку';
