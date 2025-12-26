@@ -70,7 +70,6 @@
         </div>
     </div>
 </div>
-    <!-- MODAL -->
     <div
             x-show="isOpen"
             x-transition:enter="transition ease-out duration-300"

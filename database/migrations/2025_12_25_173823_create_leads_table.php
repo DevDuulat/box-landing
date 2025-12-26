@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone');
-            $table->text('message');
+            $table->text('message')->nullable();
             $table->unsignedTinyInteger('status')->default(\App\Enums\LeadStatus::NEW->value);
             $table->timestamps();
         });

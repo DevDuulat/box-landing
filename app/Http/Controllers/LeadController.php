@@ -10,36 +10,23 @@ class LeadController extends Controller
 {
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:100',
-            'phone' => 'required|string|max:25',
+        $data = $request->validate([
+            'name'    => 'required|string|max:100',
+            'phone'   => 'required|string|max:25',
             'message' => 'nullable|string|max:500',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'errors' => $validator->errors()
-            ], 422);
-        }
-
         try {
-            Lead::create([
-                'name' => $request->name,
-                'phone' => $request->phone,
-                'message' => $request->message,
+            Lead::create(array_merge($data, [
                 'status' => LeadStatus::NEW,
-            ]);
+            ]));
 
             return response()->json([
                 'success' => true,
-                'message' => 'Заявка успешно отправлена!'
+                'message' => 'Заявка принята!'
             ]);
         } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Ошибка сервера. Попробуйте позже.'
-            ], 500);
+            return response()->json(['success' => false], 500);
         }
     }
 }
