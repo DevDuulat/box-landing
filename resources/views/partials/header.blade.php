@@ -1,4 +1,4 @@
-<header x-data="{ mobileMenuOpen: false }" class="absolute top-0 left-0 w-full z-50 bg-transparent font-montserrat">
+<header id="main-header" x-data="{ mobileMenuOpen: false }" class="fixed top-0 left-0 w-full z-50 bg-[#111111] transition-colors duration-300 font-montserrat">
     <div class="container mx-auto px-4 lg:px-8">
         <div class="flex items-center justify-between h-20 md:h-24">
             <div class="flex-shrink-0">

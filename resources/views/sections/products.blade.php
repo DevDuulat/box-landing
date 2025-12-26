@@ -41,7 +41,7 @@
 <script>
     window.productsListData = @json($productsData);
 </script>
-<div class="p-8 pt-16" x-cloak>
+<div class="p-8 pt-16" id="products" x-cloak>
     <div class="max-w-6xl mx-auto">
         <nav class="flex gap-8 border-b border-gray-200 mb-12 overflow-x-auto">
             @foreach($categories as $category)
