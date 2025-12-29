@@ -42,15 +42,10 @@ class BrandingImageResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->reorderable('sort_order')
-            ->defaultSort('sort_order')
             ->columns([
-                // Показываем миниатюру изображения
                 Tables\Columns\ImageColumn::make('path')
                     ->label('Изображение')
                     ->square(),
-
-
 
                 Tables\Columns\IconColumn::make('is_active')
                     ->label('Статус')
