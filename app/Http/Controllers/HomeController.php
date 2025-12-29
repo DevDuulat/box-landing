@@ -41,10 +41,16 @@ class HomeController extends Controller
             });
         })->values();
 
+        $brandingSlides = \App\Models\BrandingImage::where('is_active', true)
+            ->pluck('path')
+            ->map(fn($path) => asset('storage/' . $path))
+            ->toArray();
+
         return view('home', [
             'categories'   => $categories,
             'productsData' => $productsData,
-            'firstTab'     => mb_strtolower($categories->first()->name ?? '')
+            'firstTab'     => mb_strtolower($categories->first()->name ?? ''),
+            'brandingSlides' => $brandingSlides,
         ]);
     }
 }
