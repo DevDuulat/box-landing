@@ -1,7 +1,7 @@
-<section class="min-h-[90vh] md:min-h-screen relative text-white overflow-hidden flex flex-col items-center pt-32 md:pt-24 bg-[#111111]
+<section class="min-h-[90vh] md:min-h-screen relative text-white overflow-hidden flex flex-col items-center pt-28 md:pt-40 bg-[#111111]
                 bg-none md:bg-[url('/img/background2.webp')] md:bg-[length:100%] md:bg-bottom md:bg-no-repeat">
 
-    <div class="bg-mask absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#111111] to-transparent z-20"></div>
+    <div class="bg-mask absolute top-0 left-0 w-full h-32 md:h-64 bg-gradient-to-b from-[#111111] to-transparent z-20"></div>
 
     <div class="container mx-auto px-6 lg:px-8 relative z-30">
         <div class="flex flex-col items-center text-center">
