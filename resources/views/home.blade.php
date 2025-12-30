@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Главная страница лендинга')
-@section('description', 'Лучший лендинг для вашего бизнеса')
+@section('title', '')
+@section('description', '')
 @section('content')
     <div class="flex flex-col md:flex-row min-h-screen pt-20 md:pt-24 bg-white" x-data="productsComponent()">
 
