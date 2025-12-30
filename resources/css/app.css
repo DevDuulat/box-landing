@@ -109,7 +109,7 @@
 @media (min-width: 1900px) {
     .box-anim {
         width: 200px;
-        bottom: 115px;
+        bottom: 100px;
     }
 
     @keyframes driveRight {
