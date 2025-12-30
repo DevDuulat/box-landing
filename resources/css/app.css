@@ -13,7 +13,7 @@
         opacity: 1;
     }
     100% {
-        transform: translateX(calc(100vw - 100%));
+        transform: translateX(calc(95vw - 100%));
     }
 }
 
@@ -54,14 +54,44 @@
     clip-path: inset(0 30% 0 23%);
 }
 
+/* Базовые стили */
+
 .box-anim {
     position: absolute;
     width: 200px;
-    bottom: 120px;
+    bottom: 100px;
     filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
-    animation: boxSequence 8s linear infinite;
+    animation: boxSequence 10s linear infinite;
     opacity: 0;
     will-change: left;
+}
+
+/* Адаптация под 2560x1440 */
+@media (min-width: 2000px) {
+    .box-anim {
+        position: absolute;
+        width: 240px;
+        bottom: 145px;
+        filter: drop-shadow(0 20px 25px rgba(0,0,0,0.2));
+        animation: boxSequence 10s linear infinite;
+        opacity: 0;
+        will-change: left, transform;
+    }
+
+
+    @keyframes driveRight {
+        0% {
+            transform: translateX(-120%);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(calc(87vw - 100%));
+        }
+    }
+
 }
 
 @keyframes boxSequence {
