@@ -24,8 +24,8 @@
     </div>
 
     <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-        <h2 class="text-2xl md:text-4xl font-bold text-orange-500 mb-8 md:mb-12 text-center uppercase tracking-wide">
-            {{ __('messages.branding.title') }}
+        <h2 class="text-3xl md:text-5xl font-black text-gray-900  text-center uppercase tracking-tight">
+            <span class="text-orange-500">—</span> {{ __('messages.branding.title') }} <span class="text-orange-500">—</span>
         </h2>
 
         <div class="relative w-full max-w-2xl flex items-center justify-center mb-8 md:mb-12">
