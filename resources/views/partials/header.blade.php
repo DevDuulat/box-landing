@@ -1,11 +1,14 @@
 <header id="main-header" x-data="{ mobileMenuOpen: false }"
         class="fixed top-0 left-0 w-full z-50 bg-[#111111] border-b border-white/5 transition-colors duration-300 font-montserrat">
-    <div class="container mx-auto px-4 lg:px-8">
+
+    <div class="container mx-auto pl-0 pr-4 lg:pl-0 lg:pr-8">
         <div class="flex items-center justify-between h-20 md:h-24">
 
             <div class="flex items-center">
-                <a href="/" class="text-2xl md:text-3xl font-black tracking-tighter uppercase text-white">
-                    BOX<span class="text-[#FFA500]">.</span>
+                <a href="/" class="group flex items-center transition-transform active:scale-95">
+                    <img src="{{ asset('img/logo.webp') }}"
+                         alt="Я-Картон"
+                         class="h-20 md:h-24 w-auto object-contain transition-opacity group-hover:opacity-80 block">
                 </a>
             </div>
 
