@@ -19,7 +19,6 @@
 
             <p class="text-gray-400 text-base md:text-lg max-w-[310px] sm:max-w-md md:max-w-xl leading-relaxed font-normal">
                 {{ __('messages.hero_desc_1') }}
-                <span class="text-white font-semibold">{{ __('messages.hero_desc_year') }}</span>.
                 <span class="block mt-4 md:mt-2">{{ __('messages.hero_desc_2') }}</span>
             </p>
 
