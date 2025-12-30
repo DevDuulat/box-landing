@@ -120,12 +120,31 @@
 }
 
 /* Большие мониторы 2K (2560 x 1440) */
+@media (min-width: 1440px) {
+    .box-anim {
+        width: 160px;
+        bottom: 70px;
+        filter: drop-shadow(0 25px 30px rgba(0,0,0,0.25));
+    }
+    .car {
+        width: 380px;
+    }
+
+    @keyframes driveRight {
+        0% { transform: translateX(-120%); opacity: 0; }
+        10% { opacity: 1; }
+        100% { transform: translateX(calc(106vw - 100%)); }
+    }
+}
+
+/* Большие мониторы 2K (2560 x 1440) */
 @media (min-width: 2500px) {
     .box-anim {
         width: 260px;
         bottom: 145px;
         filter: drop-shadow(0 25px 30px rgba(0,0,0,0.25));
     }
+
 
     @keyframes driveRight {
         0% { transform: translateX(-120%); opacity: 0; }
