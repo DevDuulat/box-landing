@@ -3,129 +3,138 @@
 @tailwind utilities;
 
 [x-cloak] { display: none !important; }
+/* --- АДАПТИВ ДЛЯ МАШИНЫ --- */
 
+/* Базовый размер машины (Desktop 1920) */
+.car {
+    width: 1450px; /* Твой текущий размер */
+    z-index: 10;
+    will-change: transform;
+}
+
+/* Ноутбуки (1366px и ниже) */
+@media (max-width: 1400px) {
+    .car {
+        width: 420px; /* Уменьшаем размер машины */
+    }
+
+    /* Корректируем облако пыли, чтобы оно вылетало из-под маленьких колес */
+    .animate-dust-cloud {
+        width: 60px;
+        bottom: 10px;
+        left: 20px;
+    }
+}
+
+/* Специально для маленьких ноутов (1280px) */
+@media (max-width: 1280px) {
+    .car {
+        width: 280px;
+    }
+}
+/* --- ОБЩИЕ АНИМАЦИИ --- */
+
+/* Движение грузовика/машины */
 @keyframes driveRight {
-    0% {
-        transform: translateX(-120%);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(calc(95vw - 100%));
-    }
+    0% { transform: translateX(-120%); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateX(calc(92vw - 100%)); }
 }
 
-
+/* Пыль за машиной */
 @keyframes dustAppearance {
+    0% { opacity: 0; transform: scale(0.5) translateX(0); }
+    10% { opacity: 1; transform: scale(1.1) translateX(-20px); }
+    50% { opacity: 0; transform: scale(2) translateX(-100px); }
+    100% { opacity: 0; transform: scale(2) translateX(-100px); }
+}
+
+/* Движение коробок по конвейеру/дороге */
+@keyframes boxSequence {
     0% {
+        left: -10%;
         opacity: 0;
-        transform: scale(0.5) translateX(0);
+        transform: translateY(0) rotate(0deg);
     }
-    10% {
-        opacity: 1;
-        transform: scale(1.1) translateX(-20px);
-    }
-    50% {
-        opacity: 0;
-        transform: scale(2) translateX(-100px);
-    }
-
+    5% { opacity: 1; }
+    /* Микро-прыжки для реализма */
+    25% { transform: translateY(-3px) rotate(-1deg); }
+    50% { transform: translateY(0) rotate(1deg); }
+    75% { transform: translateY(-2px) rotate(-0.5deg); }
+    95% { opacity: 1; }
     100% {
+        left: 110%;
         opacity: 0;
-        transform: scale(2) translateX(-100px);
+        transform: translateY(0) rotate(0deg);
     }
 }
 
-.animate-drive {
-    animation: driveRight 1.4s ease-out forwards;
-}
+/* --- БАЗОВЫЕ СТИЛИ (Мобильные и планшеты) --- */
 
-.animate-dust-cloud {
-    animation: dustAppearance 3s ease-out 0.6s infinite;
-}
+.animate-drive { animation: driveRight 1.4s ease-out forwards; }
+.animate-dust-cloud { animation: dustAppearance 3s ease-out 0.6s infinite; }
+
 .boxes-layer {
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 5;
-
     clip-path: inset(0 30% 0 23%);
 }
 
-/* Базовые стили */
-
 .box-anim {
     position: absolute;
-    width: 200px;
-    bottom: 100px;
     filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
     animation: boxSequence 10s linear infinite;
     opacity: 0;
-    will-change: left;
+    will-change: left, transform;
 }
 
-/* Адаптация под 2560x1440 */
-@media (min-width: 2000px) {
-    .box-anim {
-        position: absolute;
-        width: 240px;
-        bottom: 145px;
-        filter: drop-shadow(0 20px 25px rgba(0,0,0,0.2));
-        animation: boxSequence 10s linear infinite;
-        opacity: 0;
-        will-change: left, transform;
-    }
+/* --- АДАПТИВ ПОД РАЗРЕШЕНИЯ --- */
 
+/* Ноутбуки (от 1366px до 1600px) */
+@media (min-width: 1366px) {
+    .box-anim {
+        width: 110px;
+        bottom: 70px;
+    }
+    @keyframes driveRight {
+        0% { transform: translateX(-120%); opacity: 0; }
+        10% { opacity: 1; }
+        100% { transform: translateX(calc(108vw - 100%)); }
+    }
+}
+
+/* Мониторы Full HD (1920 x 1080) */
+@media (min-width: 1900px) {
+    .box-anim {
+        width: 200px;
+        bottom: 115px;
+    }
 
     @keyframes driveRight {
-        0% {
-            transform: translateX(-120%);
-            opacity: 0;
-        }
-        10% {
-            opacity: 1;
-        }
-        100% {
-            transform: translateX(calc(87vw - 100%));
-        }
-    }
-
-}
-
-@keyframes boxSequence {
-    0% {
-        left: 0%;
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 1;
-    }
-
-    90% {
-        opacity: 1;
-    }
-    100% {
-        left: 110%;
-        opacity: 0;
+        0% { transform: translateX(-120%); opacity: 0; }
+        10% { opacity: 1; }
+        100% { transform: translateX(calc(91vw - 100%)); }
     }
 }
-@keyframes boxSequence {
-    0% {
-        left: 0%;
-        opacity: 0;
+
+/* Большие мониторы 2K (2560 x 1440) */
+@media (min-width: 2500px) {
+    .box-anim {
+        width: 260px;
+        bottom: 145px;
+        filter: drop-shadow(0 25px 30px rgba(0,0,0,0.25));
     }
 
-    10% {
-        opacity: 1;
-    }
-    100% {
-        left: 110%;
-        opacity: 1;
+    @keyframes driveRight {
+        0% { transform: translateX(-120%); opacity: 0; }
+        10% { opacity: 1; }
+        100% { transform: translateX(calc(86vw - 100%)); }
     }
 }
+
+/* --- ЗАДЕРЖКИ (Delays) --- */
 
 .d-1 { animation-delay: 0s; }
 .d-2 { animation-delay: 1s; }
