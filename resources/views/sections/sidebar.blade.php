@@ -1,4 +1,5 @@
-<div class="flex flex-col w-full h-full bg-[#111111] text-white border-r border-white/5 font-montserrat">
+<div class="flex flex-col w-full h-full bg-[#111111] text-white border-r border-white/5 font-montserrat"
+     x-data="{ activeTab: null }">
     <div class="h-[1px] w-full bg-white/5 flex-shrink-0"></div>
 
     <nav class="flex-1 w-full px-2 pt-4 overflow-y-auto space-y-1 custom-scrollbar">
@@ -7,7 +8,7 @@
 
             <div class="flex flex-col">
                 <button
-                        @click="setTab('{{ $catSlug }}')"
+                        @click="activeTab === '{{ $catSlug }}' ? activeTab = null : activeTab = '{{ $catSlug }}'"
                         class="flex items-center justify-between w-full group transition-all duration-300 relative min-h-[50px] py-3 px-4 rounded-xl hover:bg-white/5"
                         :class="activeTab === '{{ $catSlug }}' ? 'bg-white/5 text-white' : 'text-gray-500 hover:text-gray-200'">
 
@@ -43,6 +44,17 @@
                 </div>
             </div>
         @endforeach
+
+        <div class="flex flex-col mt-4 pt-4 border-t border-white/5 space-y-1">
+            <a href="#branding" @click="mobileMenuOpen = false"
+               class="flex items-center min-h-[44px] py-2 px-4 rounded-xl text-[13px] font-black uppercase tracking-[0.05em] text-gray-400 hover:text-[#FFA500] hover:bg-white/5 transition-all">
+                {{ __('messages.nav_branding') }}
+            </a>
+            <a href="#contacts" @click="mobileMenuOpen = false"
+               class="flex items-center min-h-[44px] py-2 px-4 rounded-xl text-[13px] font-black uppercase tracking-[0.05em] text-gray-400 hover:text-[#FFA500] hover:bg-white/5 transition-all">
+                {{ __('messages.nav_contacts') }}
+            </a>
+        </div>
     </nav>
 
     <div class="flex-shrink-0 p-6 border-t border-white/5 bg-[#111111]">
