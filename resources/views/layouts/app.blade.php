@@ -15,7 +15,6 @@
 
 </head>
 <body
-        x-data="productsComponent()"
         @open-lead-modal.window="openOrderModal()"
         @close-lead-modal.window="closeModal()"
         class="antialiased">
