@@ -31,6 +31,7 @@ return [
     ],
     'contacts' => [
         'title' => 'Байланыштар',
+        'contact_us_in_a_convenient_way' => 'Ыңгайлуу жол менен биз менен байланышыңыз',
         'factory_name' => 'Чүй<br>Гофракартон заводу',
         'country' => 'Кыргыз Республикасы',
         'region' => 'Чүй облусу',

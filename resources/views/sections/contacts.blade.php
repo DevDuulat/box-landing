@@ -3,9 +3,9 @@
 
         <div class="mb-10 border-l-4 border-orange-500 pl-6">
             <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight text-gray-900">
-                {{ __('messages.contacts.title') ?? 'Контакты' }}
+                {{ __('messages.contacts.title') }}
             </h2>
-            <p class="text-gray-400 mt-1 font-medium text-sm uppercase tracking-wider">Свяжитесь с нами удобным способом</p>
+            <p class="text-gray-400 mt-1 font-medium text-sm uppercase tracking-wider">{{ __('messages.contacts.contact_us_in_a_convenient_way') }}</p>
         </div>
 
         <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-stretch">
