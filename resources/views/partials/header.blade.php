@@ -1,6 +1,8 @@
-<header id="main-header" x-data="{ mobileMenuOpen: false }"
-        class="fixed top-0 left-0 w-full z-50 bg-[#111111] border-b border-white/5 transition-colors duration-300 font-montserrat">
-
+<header
+        id="main-header"
+        x-data="header"
+        class="fixed top-0 left-0 w-full z-50 bg-[#111111] border-b border-white/5 transition-colors duration-300 font-montserrat"
+>
     <div class="container mx-auto pl-0 pr-4 lg:pl-0 lg:pr-8">
         <div class="flex items-center justify-between h-20 md:h-24">
 
@@ -13,16 +15,25 @@
             </div>
 
             <nav class="hidden lg:flex items-center space-x-10 uppercase tracking-[0.1em]">
-                <a href="#products" class="text-gray-400 hover:text-[#FFA500] transition-colors text-[14px] font-black">
+                <a href="#products"
+                   @click.prevent="scrollTo('#products')"
+                   class="text-gray-400 hover:text-[#FFA500] transition-colors text-[14px] font-black">
                     {{ __('messages.nav_products') }}
                 </a>
-                <a href="#branding" class="text-gray-400 hover:text-[#FFA500] transition-colors text-[14px] font-black">
+
+                <a href="#branding"
+                   @click.prevent="scrollTo('#branding')"
+                   class="text-gray-400 hover:text-[#FFA500] transition-colors text-[14px] font-black">
                     {{ __('messages.nav_branding') }}
                 </a>
-                <a href="#contacts" class="text-gray-400 hover:text-[#FFA500] transition-colors text-[14px] font-black">
+
+                <a href="#contacts"
+                   @click.prevent="scrollTo('#contacts')"
+                   class="text-gray-400 hover:text-[#FFA500] transition-colors text-[14px] font-black">
                     {{ __('messages.nav_contacts') }}
                 </a>
             </nav>
+
 
             <div class="flex items-center space-x-3 md:space-x-8">
 
@@ -76,9 +87,23 @@
          x-transition:enter-end="opacity-100 translate-y-0"
          class="lg:hidden bg-[#1a1a1a] border-t border-white/5 px-6 py-8 space-y-6 shadow-2xl" x-cloak>
         <nav class="flex flex-col space-y-4">
-            <a href="#products" @click="mobileMenuOpen = false" class="text-white text-xl font-black uppercase tracking-widest">{{ __('messages.nav_products') }}</a>
-            <a href="#branding" @click="mobileMenuOpen = false" class="text-white text-xl font-black uppercase tracking-widest">{{ __('messages.nav_branding') }}</a>
-            <a href="#contacts" @click="mobileMenuOpen = false" class="text-white text-xl font-black uppercase tracking-widest">{{ __('messages.nav_contacts') }}</a>
+            <a href="#products"
+               @click.prevent="scrollTo('#products'); mobileMenuOpen = false"
+               class="text-white text-xl font-black uppercase tracking-widest">
+                {{ __('messages.nav_products') }}
+            </a>
+
+            <a href="#branding"
+               @click.prevent="scrollTo('#branding'); mobileMenuOpen = false"
+               class="text-white text-xl font-black uppercase tracking-widest">
+                {{ __('messages.nav_branding') }}
+            </a>
+
+            <a href="#contacts"
+               @click.prevent="scrollTo('#contacts'); mobileMenuOpen = false"
+               class="text-white text-xl font-black uppercase tracking-widest">
+                {{ __('messages.nav_contacts') }}
+            </a>
         </nav>
         <button @click="isOrderModalOpen = true; mobileMenuOpen = false"
                 class="w-full bg-[#FFA500] text-white py-4 rounded-xl font-black uppercase tracking-widest shadow-lg">
@@ -86,3 +111,5 @@
         </button>
     </div>
 </header>
+@vite(['resources/js/header.js'])
+
