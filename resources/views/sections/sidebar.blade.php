@@ -3,19 +3,17 @@
 
     <nav class="flex-1 w-full px-2 pt-4 overflow-y-auto space-y-1 custom-scrollbar">
         @foreach($categories as $category)
-            {{-- Важно: slug должен на 100% совпадать с полем 'cat' в массиве products --}}
             @php $catSlug = mb_strtolower($category->name); @endphp
 
             <div class="flex flex-col">
                 <button
-                        @click="activeTab = '{{ $catSlug }}'"
+                        @click="activeTab = (activeTab === '{{ $catSlug }}' ? null : '{{ $catSlug }}')"
                         class="flex items-center justify-between w-full group transition-all duration-300 relative min-h-[50px] py-3 px-4 rounded-xl hover:bg-white/5"
                         :class="activeTab === '{{ $catSlug }}' ? 'bg-white/5 text-white' : 'text-gray-500 hover:text-gray-200'">
-
-                    <span class="text-[13px] font-black uppercase tracking-[0.05em] transition-all leading-tight text-left max-w-[80%]"
-                          :class="activeTab === '{{ $catSlug }}' ? 'text-[#FFA500]' : ''">
-                        {{ $category->name }}
-                    </span>
+                <span class="text-[13px] font-black uppercase tracking-[0.05em] transition-all leading-tight text-left max-w-[80%]"
+                      :class="activeTab === '{{ $catSlug }}' ? 'text-[#FFA500]' : ''">
+                    {{ $category->name }}
+                </span>
 
                     <svg xmlns="http://www.w3.org/2000/svg"
                          class="h-4 w-4 transition-transform duration-300"
