@@ -114,6 +114,20 @@
             activeTab: '',
             products: window.productsListData || [],
 
+            scrollToProduct(key) {
+                const targetId = 'product-' + key;
+                const element = document.getElementById(targetId);
+
+                if (element) {
+                    element.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                } else {
+                    console.error("Could not find element with ID: " + targetId);
+                }
+            },
+
             init() {
                 @if($errors->any())
                     this.openOrderModal();

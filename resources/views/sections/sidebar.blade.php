@@ -24,12 +24,11 @@
                 </button>
 
                 <div x-show="activeTab === '{{ $catSlug }}'"
-                     x-collapse
                      x-cloak
                      class="flex flex-col pl-6 pr-2 py-2 space-y-1">
 
                     <template x-for="product in filteredProducts" :key="product.key">
-                        <button @click="openModal(product)"
+                        <button @click="scrollToProduct(product.key)"
                                 class="text-left py-2 px-3 rounded-lg text-[12px] font-medium text-gray-400 hover:text-[#FFA500] hover:bg-white/5 transition-all flex items-center gap-2">
                             <span class="w-1 h-1 bg-[#FFA500] rounded-full opacity-50"></span>
                             <span x-text="product.title"></span>

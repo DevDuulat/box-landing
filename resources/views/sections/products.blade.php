@@ -20,7 +20,7 @@
 
             <div class="flex flex-wrap -m-3 mb-20">
                 <template x-for="product in products.filter(p => p.cat === '{{ $catSlug }}')" :key="product.key">
-                    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-3">
+                    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-3" :id="'product-' + product.key">
                         <div @click="openModal(product)"
                              class="cursor-pointer bg-[#f2f2f2] rounded-3xl p-6 flex flex-col items-center hover:shadow-xl transition-all h-full">
                             <div class="h-40 flex items-center justify-center mb-6 w-full">
@@ -37,34 +37,3 @@
 
     @include('partials.product-modal')
 </div>
-
-<script>
-    function productsComponent() {
-        return {
-            activeTab: '{{ $firstTab }}',
-            isOpen: false,
-            selected: null,
-            products: window.productsListData,
-
-            get filteredProducts() {
-                return this.products.filter(p => p.cat === this.activeTab)
-            },
-
-            setTab(tab) {
-                this.activeTab = tab
-            },
-
-            openModal(product) {
-                this.selected = product
-                this.isOpen = true
-                document.body.classList.add('overflow-hidden')
-            },
-
-            closeModal() {
-                this.isOpen = false
-                this.selected = null
-                document.body.classList.remove('overflow-hidden')
-            }
-        }
-    }
-</script>
