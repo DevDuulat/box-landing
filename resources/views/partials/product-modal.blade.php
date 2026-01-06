@@ -34,9 +34,13 @@
                     </div>
 
                     <div class="flex gap-3 justify-start">
-                        <template x-for="(thumb, index) in (selected.thumbnails || [selected.image])" :key="index">
-                            <div class="border-b-2 border-orange-400 pb-1 cursor-pointer">
-                                <img :src="thumb" class="w-16 h-12 bg-gray-100 rounded object-cover shadow-sm">
+                        <template x-for="imgUrl in [selected.photo_brown, selected.photo_white].filter(path => path !== null)" :key="imgUrl">
+                            <div
+                                    @click="selected.image = imgUrl"
+                                    class="border-b-2 pb-1 cursor-pointer transition-colors"
+                                    :class="selected.image === imgUrl ? 'border-orange-500' : 'border-transparent'"
+                            >
+                                <img :src="imgUrl" class="w-16 h-12 bg-gray-100 rounded object-cover shadow-sm">
                             </div>
                         </template>
                     </div>
@@ -86,8 +90,21 @@
                         </div>
 
                         <div class="flex gap-4 pt-4">
-                            <div class="w-10 h-10 rounded-xl bg-[#D9A66B] border-2 border-orange-400 cursor-pointer hover:scale-110 transition-transform shadow-sm"></div>
-                            <div class="w-10 h-10 rounded-xl bg-white border border-gray-200 cursor-pointer hover:scale-110 transition-transform shadow-sm"></div>
+                            <template x-if="selected.photo_brown">
+                                <div
+                                        @click="selected.image = selected.photo_brown"
+                                        :class="{'ring-4 ring-orange-500/30 scale-110': selected.image === selected.photo_brown}"
+                                        class="w-10 h-10 rounded-xl bg-[#D9A66B] border-2 border-orange-400 cursor-pointer hover:scale-110 transition-all shadow-sm"
+                                ></div>
+                            </template>
+
+                            <template x-if="selected.photo_white">
+                                <div
+                                        @click="selected.image = selected.photo_white"
+                                        :class="{'ring-4 ring-orange-500/30 scale-110': selected.image === selected.photo_white}"
+                                        class="w-10 h-10 rounded-xl bg-white border border-gray-200 cursor-pointer hover:scale-110 transition-all shadow-sm"
+                                ></div>
+                            </template>
                         </div>
                     </div>
 
