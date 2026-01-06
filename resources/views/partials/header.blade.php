@@ -111,5 +111,4 @@
         </button>
     </div>
 </header>
-@vite(['resources/js/header.js'])
 
