@@ -15,9 +15,12 @@
 
 </head>
 <body
+        x-data="productsComponent"
+        x-init="init()"
         @open-lead-modal.window="openOrderModal()"
         @close-lead-modal.window="closeModal()"
-        class="antialiased">
+        class="antialiased"
+>
 @include('partials.header')
 <main>
     @yield('content')
