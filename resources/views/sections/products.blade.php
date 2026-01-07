@@ -27,7 +27,13 @@
                                 <img
                                         :src="product.image"
                                         :alt="product.title"
-                                        class="mix-blend-multiply max-h-full object-contain transition duration-300 hover:scale-105">
+                                        class="
+                                            mix-blend-multiply
+                                            max-h-full
+                                            object-contain
+                                            duration-300
+                                            hover:drop-shadow-[0_12px_25px_rgba(0,0,0,0.3)]
+                                        ">
                             </div>
 
 
