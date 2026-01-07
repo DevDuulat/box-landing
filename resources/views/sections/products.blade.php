@@ -34,8 +34,7 @@
                                             transition
                                             duration-300
                                             hover:drop-shadow-[0_10px_20px_rgba(0,0,0,0.25)]
-                                        "
-                                            >
+                                        ">
                             </div>
                             <h3 class="font-bold text-center text-gray-800" x-text="product.title"></h3>
                         </div>
