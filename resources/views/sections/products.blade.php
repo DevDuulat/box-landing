@@ -42,18 +42,46 @@
                                 <template x-if="product.photo_brown">
                                     <div
                                             @click="product.image = product.photo_brown"
-                                            :class="{'ring-2 ring-orange-500 ring-offset-2 scale-110': product.image === product.photo_brown}"
-                                            class="w-6 h-6 rounded-lg bg-[#D9A66B] border border-orange-400 cursor-pointer hover:scale-110 transition-all shadow-sm"
-                                    ></div>
+                                            class="flex items-center gap-2 cursor-pointer"
+                                    >
+                                        <div
+                                                :class="{
+                'ring-2 ring-orange-500 ring-offset-2 scale-110':
+                product.image === product.photo_brown
+            }"
+                                                class="w-6 h-6 rounded-lg bg-[#D9A66B] border border-orange-400
+                   transition-all shadow-sm"
+                                        ></div>
+
+                                        <span
+                                                class="text-sm text-gray-700 select-none"
+                                                x-text="product.colors.brown"
+                                        ></span>
+                                    </div>
                                 </template>
 
                                 <template x-if="product.photo_white">
                                     <div
                                             @click="product.image = product.photo_white"
-                                            :class="{'ring-2 ring-orange-500 ring-offset-2 scale-110': product.image === product.photo_white}"
-                                            class="w-6 h-6 rounded-lg bg-white border border-gray-200 cursor-pointer hover:scale-110 transition-all shadow-sm"
-                                    ></div>
+                                            class="flex items-center gap-2 cursor-pointer"
+                                    >
+                                        <div
+                                                :class="{
+                'ring-2 ring-orange-500 ring-offset-2 scale-110':
+                product.image === product.photo_white
+            }"
+                                                class="w-6 h-6 rounded-lg bg-white border border-gray-200
+                   transition-all shadow-sm"
+                                        ></div>
+
+                                        <span
+                                                class="text-sm text-gray-700 select-none"
+                                                x-text="product.colors.white"
+                                        ></span>
+                                    </div>
                                 </template>
+
+
                             </div>
 
                         </div>

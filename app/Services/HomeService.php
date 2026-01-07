@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\ColorType;
 use App\Models\BrandingImage;
 use App\Models\Category;
 use App\Models\Product;
@@ -47,6 +48,14 @@ class HomeService
                     : 'https://placehold.co/400x300',
                 'photo_brown' => $product->photo_brown ? asset('storage/' . $product->photo_brown) : null,
                 'photo_white' => $product->photo_white ? asset('storage/' . $product->photo_white) : null,
+                'colors' => [
+                    'brown' => $product->photo_brown
+                        ? ColorType::Brown->label()
+                        : null,
+                    'white' => $product->photo_white
+                        ? ColorType::White->label()
+                        : null,
+                ],
                 'color'      => $product->color_type,
                 'print'      => $product->print_colors_count,
                 'dimensions' => $product->dimensions,
