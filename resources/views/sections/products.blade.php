@@ -22,9 +22,20 @@
                 <template x-for="product in products.filter(p => p.cat === '{{ $catSlug }}')" :key="product.key">
                     <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-3" :id="'product-' + product.key">
                         <div @click="openModal(product)"
-                             class="cursor-pointer bg-[#f2f2f2] rounded-3xl p-6 flex flex-col items-center hover:shadow-xl transition-all h-full">
+                             class="cursor-pointer p-6 flex flex-col items-center transition-all h-full">
                             <div class="h-40 flex items-center justify-center mb-6 w-full">
-                                <img :src="product.image" class="mix-blend-multiply max-h-full object-contain" :alt="product.title">
+                                <img
+                                        :src="product.image"
+                                        :alt="product.title"
+                                        class="
+                                            mix-blend-multiply
+                                            max-h-full
+                                            object-contain
+                                            transition
+                                            duration-300
+                                            hover:drop-shadow-[0_10px_20px_rgba(0,0,0,0.25)]
+                                        "
+                                            >
                             </div>
                             <h3 class="font-bold text-center text-gray-800" x-text="product.title"></h3>
                         </div>
