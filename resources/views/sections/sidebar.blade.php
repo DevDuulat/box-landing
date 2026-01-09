@@ -1,7 +1,7 @@
 <div class="flex flex-col w-full h-full bg-[#111111] text-white border-r border-white/5 font-montserrat">
     <div class="h-[1px] w-full bg-white/5 flex-shrink-0"></div>
 
-    <nav class="flex-1 w-full px-2 pt-4 overflow-y-auto space-y-1 custom-scrollbar">
+    <nav class="flex-1 w-full px-2 pt-4  space-y-1 custom-scrollbar">
         @foreach($categories as $category)
             @php $catSlug = mb_strtolower($category->name); @endphp
 
@@ -57,8 +57,8 @@
     <div class="flex-shrink-0 p-6 border-t border-white/5 bg-[#111111]">
         <div class="flex flex-col gap-1">
             <span class="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Связь с нами</span>
-            <a href="tel:+74957408966" class="text-base font-black hover:text-[#FFA500] transition-colors whitespace-nowrap">
-                8 (495) 740-89-66
+            <a href="tel:+996508666666" class="text-base font-black hover:text-[#FFA500] transition-colors whitespace-nowrap">
+                +996 508 666 666
             </a>
         </div>
     </div>
