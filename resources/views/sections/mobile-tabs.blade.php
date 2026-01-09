@@ -9,11 +9,20 @@
         @foreach($categories as $category)
             @php $catSlug = mb_strtolower($category->name); @endphp
             <button
-                    @click="setTab('{{ $catSlug }}'); $el.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });"
+                    @click="
+                        activeTab = '{{ $catSlug }}';
+                        const target = document.getElementById('cat-{{ $catSlug }}');
+                        if(target) {
+                            const offset = 120; // отступ сверху для липкого меню
+                            const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                            window.scrollTo({ top, behavior: 'smooth' });
+                        }
+                        $el.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                    "
                     class="whitespace-nowrap px-5 py-2.5 rounded-full text-[11px] font-black uppercase tracking-widest transition-all duration-300 border flex-shrink-0"
                     :class="activeTab === '{{ $catSlug }}'
-                        ? 'bg-[#FFA500] border-[#FFA500] text-white shadow-[0_4px_12px_rgba(255,165,0,0.3)]'
-                        : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'">
+                    ? 'bg-[#FFA500] border-[#FFA500] text-white shadow-[0_4px_12px_rgba(255,165,0,0.3)]'
+                    : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'">
                 {{ $category->name }}
             </button>
         @endforeach

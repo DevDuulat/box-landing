@@ -1,4 +1,4 @@
-<section class="h-[calc(80vh-5rem)] md:h-[calc(95vh-6rem)] relative text-white overflow-hidden flex flex-col items-center pt-8 md:pt-12 bg-[#111111]
+<section class="h-[calc(90vh-5rem)] md:h-[calc(100vh-6rem)] relative text-white overflow-hidden flex flex-col items-center pt-8 md:pt-12 bg-[#111111]
                 bg-none md:bg-[url('/img/background2.webp')] md:bg-[length:100%] md:bg-bottom md:bg-no-repeat">
 
 <div class="bg-mask absolute top-0 left-0 w-full h-32 md:h-64 bg-gradient-to-b from-[#111111] to-transparent z-20"></div>
