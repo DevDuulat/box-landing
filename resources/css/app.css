@@ -96,12 +96,12 @@
 @media (min-width: 1366px) {
     .box-anim {
         width: 110px;
-        bottom: 70px;
+        bottom: 83px;
     }
     @keyframes driveRight {
-        0% { transform: translateX(-120%); opacity: 0; }
+        0% { transform: translateX(-110%); opacity: 0; }
         10% { opacity: 1; }
-        100% { transform: translateX(calc(108vw - 100%)); }
+        100% { transform: translateX(calc(100vw - 100%)); }
     }
 }
 
