@@ -39,7 +39,7 @@
     </div>
 
     <div class="absolute hidden md:block bottom-0 left-0 w-full max-w-[400px] md:max-w-[600px] lg:max-w-[800px] pointer-events-none z-10 animate-drive">
-        <img src="/img/car.png" alt="{{ __('messages.alt_delivery') }}" class="car w-full h-auto object-contain relative z-10">
+        <img src="/img/car.webp" alt="{{ __('messages.alt_delivery') }}" class="car w-full h-auto object-contain relative z-10">
         <div class="absolute bottom-4 left-0 flex space-x-[-10px] opacity-0 animate-dust-cloud dust-particle">
             <div class="w-8 h-8 bg-gray-400/40 rounded-full blur-md"></div>
             <div class="w-12 h-10 bg-gray-500/30 rounded-full blur-lg"></div>
